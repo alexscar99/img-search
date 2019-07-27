@@ -1,16 +1,26 @@
 import React from 'react';
 
+interface SearchBarProps {
+  onSubmit: (term: string) => void;
+}
+
 interface SearchBarState {
   term: string;
 }
 
-class SearchBar extends React.Component<{}, SearchBarState> {
+class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
   state = { term: '' };
+
+  onFormSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+
+    this.props.onSubmit(this.state.term);
+  };
 
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label>Image Search</label>
             <input
