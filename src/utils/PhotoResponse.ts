@@ -1,4 +1,4 @@
-export type PhotoResponse = {
+export interface PhotoResponse {
   alt_description: string;
   categories: [];
   color: string;
@@ -58,4 +58,4 @@ export type PhotoResponse = {
     username: string;
   };
   width: number;
-};
+}
